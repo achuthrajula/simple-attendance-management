@@ -1,0 +1,41 @@
+extends layout
+
+block body-pack
+    .container
+        h2.text-center Attendance Management Sign Up
+        form.mt-5(action='/auth/signup' method='POST')
+            .container
+                .row
+                    .col-md-3
+                    .col-md-3
+                        .form-group
+                            label(for='firstname') First Name
+                            input.form-control(type='text' name='firstname')
+                    .col-md-3
+                        .form-group
+                            label(for='lastname') Last Name
+                            input.form-control(type='text' name='lastname')
+                    .col-md-3
+                .row
+                    .col-md-3
+                    .col-md-6
+                        .form-group
+                            label(for='mobile') Mobile No.
+                            input.form-control(type='text' name='mobile')
+                        .form-group
+                            label(for='id') ID
+                            input.form-control(type='text' name='id')
+                        .form-group
+                            label(for='password') Password
+                            input.form-control(type='password' name='password')
+                        .form-group
+                            label(for='repassword') Confirm Password
+                            input.form-control(type='password' name='repassword')
+                        .form-group
+                            label(for='role') Role
+                            select.form-control(name='role')
+                                option(value='student') Student
+                                option(value='teacher') Teacher
+                    .col-md-3
+                .text-center
+                    button.btn.btn-primary(type='submit') Sign Up

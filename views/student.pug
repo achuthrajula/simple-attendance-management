@@ -1,0 +1,37 @@
+extends layout
+
+block body-pack
+	nav.navbar.navbar-expand-md.navbar-dark.bg-dark
+		a.navbar-brand(href='#')
+		button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarsExampleDefault' aria-controls='navbarsExampleDefault' aria-expanded='false' aria-label='Toggle navigation')
+			span.navbar-toggler-icon
+		#navbarsExampleDefault.collapse.navbar-collapse
+			ul.navbar-nav.mr-auto
+		.dropdown
+			button.btn.btn-primary.dropdown-toggle(type='button' data-toggle='dropdown')
+				span.caret
+			ul.dropdown-menu
+				li
+					button#btnLogout.btn.btn-danger() Logout
+	.jumbotron.pt-3.pb-3
+		h1.display-4 Attendance Management System
+	.container
+		.row
+			.col-md-12.text-left
+				h3 Hello #{user.firstname} #{user.lastname},
+		.row.mt-3
+			.col-12.align-center
+				h2 Your Current Attendance is #{user.attendance}%
+
+block extra-scripts
+	script.
+		document.getElementById("btnLogout").addEventListener('click', function() {
+			fetch("/auth/logout", {
+				method: "GET"
+			}).then(function (res) {
+				alert("Logged out");
+				document.location.href="/";
+			}).catch(function (res) {
+				alert(res);
+			});
+		});

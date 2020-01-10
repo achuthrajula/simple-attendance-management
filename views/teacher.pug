@@ -1,0 +1,58 @@
+extends layout
+
+block body-pack
+    nav.navbar.navbar-expand-md.navbar-dark.bg-dark
+        a.navbar-brand(href='#')
+        button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarsExampleDefault' aria-controls='navbarsExampleDefault' aria-expanded='false' aria-label='Toggle navigation')
+            span.navbar-toggler-icon
+        #navbarsExampleDefault.collapse.navbar-collapse
+            ul.navbar-nav.mr-auto
+        .dropdown
+            button.btn.btn-primary.dropdown-toggle(type='button' data-toggle='dropdown')
+                span.caret
+            ul.dropdown-menu
+                li
+                    button#btnLogout.btn.btn-danger() Logout
+    .jumbotron.pt-3.pb-3
+        h1.display-4 Attendance Management System
+    .container
+        .row
+            .col-md-12.text-left
+                h3 Hello #{user.firstname} #{user.lastname},
+        .row.mt-3
+            .col-12.align-center
+                form(action='/api/save' method="POST")
+                    table(cellpadding='30')
+                        tr
+                            th Student Roll
+                            th Student Name      
+                            th Student's Current Attendance
+                            th Absent
+                            th 
+                                input(type="text" name="totalClasses" placeholder="Total Classes")
+                        each student in students
+                            tr
+                                td #{student.id}
+                                td #{student.firstname} #{student.lastname}
+                                td #{student.attendance}%
+                                td      
+                                    input(type="hidden" name="attendance" value='0')
+                                    input(type="checkbox" name="attendance" value='1')
+                        tr
+                            td
+                            td
+                            td 
+                                input(type="submit" value="Save")
+
+block extra-scripts
+    script.
+        document.getElementById("btnLogout").addEventListener('click', function() {
+            fetch("/auth/logout", {
+                method: "GET"
+            }).then(function (res) {
+                alert("Logged out");
+                document.location.href="/";
+            }).catch(function (res) {
+                alert(res);
+            });
+        });
