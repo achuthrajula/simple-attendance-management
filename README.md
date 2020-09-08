@@ -1,4 +1,9 @@
-# Assignment for Back-End Developer @MyWays
+# Simple Attendance Management System
+
+This attendance management system let's the organisation to mark attendance to the all it's employees and let's the 
+employees in the organisation check their individual attendance all using a same app.
+It uses a role based authentication. The system displays different pages and authority to
+different users based on their role they specify during the sign-up. 
 
 ## Stack
 
