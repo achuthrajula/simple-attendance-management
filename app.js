@@ -27,7 +27,8 @@ mongoose.connect(
 	"mongodb+srv://white:IQ0HnNhQhADPYO3R@pegasus-9inbt.mongodb.net/assignment?retryWrites=true",
 	{
 		useNewUrlParser: true,
-		useUnifiedTopology: true
+		useUnifiedTopology: true,
+		useFindAndModify: false
 	},
 	(err) => {
 		if (err) {
